@@ -1,0 +1,74 @@
+package Pratica_projetos;
+
+//Consultar valor
+//Depositar valor
+//Sacar Valor
+//Limite de valor
+//Sair da operação
+
+
+import javax.xml.transform.Source;
+import java.util.Scanner;
+
+public class ControleBancario {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Informe seu nome: ");
+        String nomeUser = input.nextLine();
+
+        int acao = 0;
+        double deposito = 0;
+
+
+        while (acao != 4) {
+            System.out.println("\n\nBem vindo a sua conta, " + nomeUser);
+            System.out.println("Digite qual ação quer efetuar em sua conta");
+            System.out.println("""
+                *******************************************************    
+                1 - Para depositar
+                2 - Para sacar
+                3 - Para consultar saldo
+                4 - Para sair da operação
+                *******************************************************
+                """);
+            System.out.println("Informe sua opção");
+            acao = input.nextInt();
+
+            switch (acao) {
+                case 1:
+                    System.out.println("Informe o valor a ser depositado: ");
+                    double depositarValor = input.nextDouble();
+                    if (depositarValor > 0 ) {
+                        deposito += depositarValor;
+                    } else {
+                        System.out.println("Você informou um valor invalido");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Informe o valor a ser sacado: ");
+                    double sacarValor = input.nextDouble();
+                    if (sacarValor > 0 && deposito > 0 ) {
+                        deposito -= sacarValor;
+                    } else if (deposito <= 0) {
+                        System.out.println("Saldo ineficiente para saque: ");
+                        System.out.println("Seu saldo é de: " + deposito);
+                    } else {
+                        System.out.println("Você informou um valolr invalido");
+                    }
+                    break;
+                case 3:
+                    System.out.println("********************");
+                    System.out.println("Ola, " + nomeUser);
+                    System.out.println("Seu saldo em conta é de: R$" + deposito);
+                    System.out.println("********************");
+                    break;
+                case 4:
+                    System.out.println("Obrigado por usar nossos serviços");
+                    break;
+                default:
+                    System.out.println("Opção selecionada é invalida, tente novamente");
+                    break;
+            }
+        } input.close();
+    }
+}
