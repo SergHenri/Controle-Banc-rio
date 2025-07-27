@@ -1,11 +1,5 @@
 package Pratica_projetos;
 
-//Consultar valor
-//Depositar valor
-//Sacar Valor
-//Limite de valor
-//Sair da operação
-
 
 import javax.xml.transform.Source;
 import java.util.Scanner;
